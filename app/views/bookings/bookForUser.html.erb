@@ -1,0 +1,11 @@
+<h3>Select the user you want to book for</h3>
+
+
+
+
+<table>
+<tr><th>User Name </th><th> Book? </th></tr>
+<% @users.each do |u| %>
+<tr><th> <%=u.name%> </th><th> <form action="/bookings_path/createbookingfor" method="get"> <input type="hidden" name="user_id" value="<%= u.id%>"><input type=submit value="Book for this user"> </th></tr>
+<%end%>
+</table>

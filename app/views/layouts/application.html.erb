@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
   <title>Library App</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen"
+  <link rel="stylesheet" href="/resources/demos/style.css">
 
    <%if(session[:user]) %>
 </head>
@@ -24,7 +28,6 @@
 
 
   <%end%>
-
   <body>
     <%= yield %>
   </body>

@@ -1,0 +1,70 @@
+<script type="text/javascript">
+	   /* @RoomNumberArray=[]
+    Room.where(size: @size, building: @building).each do |r| 
+      @RoomNumberArray.push(r.room_number) 
+    end 
+    @BookedRoomNumbers=[]
+    Booking.all.each do |b|
+      @BookedRoomNumbers.push(b.room_number)
+    end
+    @Brooms=[]
+    @BookedRooms = Booking.where(room_number: @RoomNumberArray, datetime: @datetime)
+    @BookedRooms.each do |b|
+      @Brooms.push(b.room_number)
+    end
+    @BookedRooms = Room.where(room_number: @Brooms)
+        @FreeRooms=[]
+    @BookedRoomNumbers.each do |br|
+      @RoomNumberArray.each do |b|
+        if(br==b)
+          @RoomNumberArray.delete(b)
+        end
+      end
+    end
+    @NotBookedRooms = Room.where(room_number: @RoomNumberArray)*/
+</script>
+<%=@BookingsForThatDay%>
+--------------------------------
+<%=@datetime%>
+
+<h2>Booked Rooms</h2>
+<table>
+<tr><th>Room Number</th><th>Location</th></tr>
+<% @commonRooms.each do |r| %>
+<tr>
+<th>
+	<%= r.room_number%>
+</th>
+<th>
+	<%=r.building%>
+</th>
+</tr>
+<%end%>
+</table>
+
+<h2>Available Rooms</h2>
+<table>
+<tr><th>Room Number</th><th>Location</th></tr>
+<% @uncommon.each do |r| %>
+<tr>
+<th>
+	<%= r.room_number%>
+</th>
+<th>
+	<%=r.building%>
+</th>
+<th>
+<form action="newBooking" method="get">
+	<input type="hidden" name="room_number" value="<%= r.room_number%>">
+	<input type="hidden" name="datetime" value="<%= @datetime%>">
+	<input type="hidden" name="user_id" value="<%= @user_id%>">
+	<input type="submit" value="Book Now">
+	</form>
+</th>
+</tr>
+<%end%>
+</table>
+
+
+
+

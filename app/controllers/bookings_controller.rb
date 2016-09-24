@@ -4,7 +4,6 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
-    session[:user]= User.find(2)
     begin
      if(!session[:user])
       raise "NO_ACCESS"

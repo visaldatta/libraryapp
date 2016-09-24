@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  # GET /users/login
+  def login
+    @user = User.new
+  end
+
   # GET /users/1/edit
   def edit
   end
@@ -28,8 +33,12 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        if session[:user]
+          format.html { redirect_to @user, notice: 'User was successfully created.' }
+        else
+          format.html { redirect_to '/'}
+        end
+        format.json { render :show, status: :created, location: '/' }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -57,9 +66,38 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
+
+
+
+  def login
+    @email = params[:email]
+    @password = params[:password]
+    @user = User.find_by_email(@email)
+    puts @user
+    respond_to do |format|
+      if(nil!=@user)
+        if(@password == @user.password)
+          session[:user] = @user
+          session[:exists] = true
+          format.html { redirect_to '/bookings'}  
+        else
+            session.clear
+            format.html { redirect_to '/', notice: 'Incorrect login!' }
+         end
+      else
+        session.clear
+        format.html { redirect_to '/', notice: 'Invalid user Email!' }
+      end  
+    end 
+  end
+
+  def logout
+    session.clear
+    format.html { redirect_to '/', notice: 'successfully logged out!' }
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

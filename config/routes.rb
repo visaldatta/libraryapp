@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root 'home#login'
+  get '/logout' => 'users#logout', as: 'logout'
+  post '/users/login' => 'users#login'
   resources :bookings
   resources :bookings
   resources :rooms

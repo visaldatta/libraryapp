@@ -19,6 +19,6 @@
   <strong>Status:</strong>
   <%= @room.status %>
 </p>
-
+<form action="/bookings_path/history" method="get"><input type="hidden" name="room_number" value="<%= @room.room_number%>"><input type="hidden" name="id" value="<%= @room.id%>"><input type="submit" value="History"></form>
 <%= link_to 'Edit', edit_room_path(@room) %> |
 <%= link_to 'Back', rooms_path %>

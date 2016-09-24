@@ -5,6 +5,15 @@ Rails.application.routes.draw do
   resources :bookings
   resources :users
   resources :users
+  match 'bookings_path/allrooms' => 'bookings#allrooms', via: [:get]
+  match 'bookings_path/search' => 'bookings#search', via: [:get]
+  match 'bookings_path/find' => 'bookings#find', via: [:get]
+  match 'bookings_path/newBooking' => 'bookings#newBooking', via: [:get]
+  match 'bookings_path/newBooking' => 'bookings#newBooking', via: [:get]
+  match 'bookings_path/history' => 'bookings#history', via: [:get]
+  match 'bookings_path/createbookingfor' => 'bookings#createbookingfor', via: [:get]
+  match 'bookings_path/bookForUser' => 'bookings#bookForUser', via: [:get]
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

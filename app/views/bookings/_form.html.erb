@@ -10,14 +10,11 @@
       </ul>
     </div>
   <% end %>
-
+    <% @rooms.each do |r|%>
+  <input type="radio" name="room_number" value= <%= r.room_number %> ><%= r.room_number %><br>
+    <%end%>
   <div class="field">
-    <%= f.label :room_number %><br>
-    <%= f.text_field :room_number %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+  <input type="hidden" name="user_id" value="<%= @user_id%>">
   </div>
   <div class="field">
     <%= f.label :datetime %><br>

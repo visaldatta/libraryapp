@@ -23,12 +23,10 @@
     end
     @NotBookedRooms = Room.where(room_number: @RoomNumberArray)*/
 </script>
-<%=@BookingsForThatDay%>
---------------------------------
-<%=@datetime%>
+
 
 <h2>Booked Rooms</h2>
-<table>
+<table class="table">
 <tr><th>Room Number</th><th>Location</th></tr>
 <% @commonRooms.each do |r| %>
 <tr>
@@ -43,7 +41,7 @@
 </table>
 
 <h2>Available Rooms</h2>
-<table>
+<table class="table">
 <tr><th>Room Number</th><th>Location</th></tr>
 <% @uncommon.each do |r| %>
 <tr>

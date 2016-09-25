@@ -1,22 +1,39 @@
 
   <h1>Book a room</h1>
   <form action="find" method="get">
+
+  <h4> Choose Building Preference</h4>
   James B Hunt
-  <input type="radio" name="building" value="Hunt">
+  <input type="radio" name="building" value="Hunt" checked="checked">
   D H Hill
   <input type="radio" name="building" value="Hill">
 
+<br/>
+
+<h4>Choose seating preference </h4>
   4 seats
-  <input type="radio" name=size value="4">
+  <input type="radio" name=size value="4" checked="checked">
   6 seats
   <input type="radio" name=size value="6">
   12 seats
   <input type="radio" name=size value="12">
 
+<br/>
+
   <div class="field">
   <input type="hidden" name="user_id" value="<%= @user_id%>">
   </div>
-<input type="datetime" name="datetime">
+
+  <h4>Choose by availability (To view general history or to view available rooms)</h4>
+  Available
+    <input type="radio" name="avail" value="Available">
+  Booked
+  <input type="radio" name="avail" value="Booked">
+
+  <br/>
+
+  <h4>Choose date and time </h4>
+<input type="datetime" name="datetime" required>
 
 
   <input type="submit" name="submit" value="submit">

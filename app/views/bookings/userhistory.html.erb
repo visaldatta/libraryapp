@@ -1,0 +1,8 @@
+
+<h4>History for this user</h4>
+<table class="table">
+<tr><th>Room number</th><th>Date and Time</th></tr>
+<% @bookings.each do |b| %>
+<tr><th><%= b.room_number%></th><th><%= b.datetime%></th></tr>
+<%end%>
+</table>

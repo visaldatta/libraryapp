@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :room_number %><br>
-    <%= f.text_field :room_number %>
+    <%= f.text_field :room_number , :required => true%>
   </div>
   <div class="field">
     <%= f.label :building %><br>
-    <%= f.text_field :building %>
+    <%= f.text_field :building, :required => true %>
   </div>
   <div class="field">
     <%= f.label :size %><br>
-    <%= f.text_field :size %>
+    <%= f.text_field :size , :required => true%>
   </div>
   <div class="field">
     <%= f.label :status %><br>

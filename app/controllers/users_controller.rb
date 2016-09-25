@@ -41,6 +41,9 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    if(User.where(email: @user.password))
+      render "error"
+    else
 
     respond_to do |format|
       if @user.save
@@ -55,6 +58,7 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
   end
 
   # PATCH/PUT /users/1

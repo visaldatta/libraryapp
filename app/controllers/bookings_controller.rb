@@ -102,6 +102,10 @@ end
     @adjusted_datetime = @datetime.to_datetime + 3600
     @size = @size+ " seats"
     @roomsMatchBS=Room.where(size: @size, building: @building)
+
+    if((@datetime.to_datetime>=Date.today.to_datetime+7.0) or @datetime.to_datetime<=Date.today.to_datetime)
+      render "error"
+    else
      ##and (!session[:user]["admin"])
     @BookingsForThatDay = Booking.where("datetime <= ? and datetime >= ?",@adjusted_datetime, @datetime)
     puts Booking.where("user_id= ? and datetime <= ? and datetime >= ?",@user_id, @datetime.to_datetime+2/24.0, @datetime.to_datetime-2/24.0).first
@@ -141,6 +145,14 @@ end
 
     render "find"
   end
+  end
+  end
+
+
+  def userhistory
+    @user_id= params[:user_id]
+    @bookings = Booking.where(user_id: @user_id)
+    render "userhistory"
   end
 
   # GET /bookings/new

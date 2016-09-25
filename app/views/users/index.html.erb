@@ -2,15 +2,12 @@
 
 <h1>List of Users</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
       <th>Admin</th>
-      <th>Super</th>
-      <th>Messages</th>
-      <th>Unread</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,9 +18,6 @@
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.admin %></td>
-        <td><%= user.super %></td>
-        <td><%= user.messages %></td>
-        <td><%= user.unread %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

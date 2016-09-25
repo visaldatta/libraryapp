@@ -16,20 +16,6 @@
   <%= @user.admin %>
 </p>
 
-<p>
-  <strong>Super:</strong>
-  <%= @user.super %>
-</p>
-
-<p>
-  <strong>Messages:</strong>
-  <%= @user.messages %>
-</p>
-
-<p>
-  <strong>Unread:</strong>
-  <%= @user.unread %>
-</p>
-
+<form action="/bookings_path/userhistory" method="get"><input type="hidden" name="user_id" value="<%=@user.id%>"><input type="submit" name="Show History" value="Show History"></form>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

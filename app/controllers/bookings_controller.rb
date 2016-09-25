@@ -98,8 +98,12 @@ end
     @user_id = params[:user_id]
     @size = params[:size]
     @building = params[:building]
-    @datetime = params[:datetime].to_datetime
-    @adjusted_datetime = @datetime.to_datetime + 3600
+    @datetime = params[:datetime]
+    if @datetime == nil
+      @adjusted_datetime = DateTime.now + 3600
+    else
+      @adjusted_datetime = @datetime.to_datetime + 3600
+    end
     @size = @size+ " seats"
     @roomsMatchBS=Room.where(size: @size, building: @building)
      ##and (!session[:user]["admin"])

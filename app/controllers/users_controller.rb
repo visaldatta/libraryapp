@@ -77,7 +77,6 @@ class UsersController < ApplicationController
     @user = User.find_by_email(@email)
     puts @user
     respond_to do |format|
-        session.clear
       if(nil!=@user)
         if(@password == @user.password)
           session[:user] = @user
@@ -86,7 +85,7 @@ class UsersController < ApplicationController
         else
             session.clear
             format.html { redirect_to '/', notice: 'Incorrect login!' }
-         end
+        end
       else
         session.clear
         format.html { redirect_to '/', notice: 'Invalid user Email!' }

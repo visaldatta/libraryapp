@@ -4,7 +4,16 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    begin
+    if(session[:user]["admin"])
     @users = User.all
+    else
+      raise "No_ACCESS"
+    end
+  rescue
+    render "error"
+  else
+  end
   end
 
   # GET /users/1
@@ -24,6 +33,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+
+
   end
 
   # POST /users
@@ -49,6 +60,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    begin
+    if(session[:user]["id"]!=@user.id)
+      rase "No_ACCESS"
+    else
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -57,16 +72,32 @@ class UsersController < ApplicationController
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
+      end
+     end
+    rescue
+  render "error"
+else
+end
   end
 
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
+    begin
+      if(@user.super)
+        raise "NO_ACCESS"
+      else
+            @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
     end
+  end
+    rescue
+      render "error"
+    else
+    end
+
+
   end
 
 

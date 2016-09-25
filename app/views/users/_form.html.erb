@@ -23,6 +23,7 @@
     <%= f.label :password %><br>
     <%= f.text_field :password %>
   </div>
+  <%if(session[:user]["admin"])%>
   <div class="field">
     <%= f.label :admin %><br>
     <%= f.check_box :admin %>
@@ -31,6 +32,7 @@
     <%= f.label :super %><br>
     <%= f.check_box :super %>
   </div>
+
   <div class="field">
     <%= f.label :messages %><br>
     <%= f.text_field :messages %>
@@ -39,6 +41,7 @@
     <%= f.label :unread %><br>
     <%= f.check_box :unread %>
   </div>
+  <%end%>
   <div class="actions">
     <%= f.submit %>
   </div>

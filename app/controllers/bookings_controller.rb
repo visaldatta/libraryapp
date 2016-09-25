@@ -36,7 +36,16 @@ class BookingsController < ApplicationController
   end
 
   def bookForUser
+    begin
+    if(session[:user]["admin"])
     @users = User.all
+  else
+    raise "NO_ACCESS"
+  end
+  rescue
+  render "error"
+  else
+end
   end
 
   def createbookingfor
@@ -136,10 +145,9 @@ class BookingsController < ApplicationController
 
   # GET /bookings/new
   def new
-##    @user_id=session[:user]["id"]
-  #  @booking = Booking.new
-   # @rooms = Room.all
-   search()
+    @user_id=session[:user]["id"]
+    @booking = Booking.new
+    @rooms = Room.all
   end
 
   # GET /bookings/1/edit

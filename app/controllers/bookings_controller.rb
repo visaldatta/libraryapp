@@ -136,9 +136,10 @@ class BookingsController < ApplicationController
 
   # GET /bookings/new
   def new
-    @user_id=session[:user]["id"]
-    @booking = Booking.new
-    @rooms = Room.all
+##    @user_id=session[:user]["id"]
+  #  @booking = Booking.new
+   # @rooms = Room.all
+   search()
   end
 
   # GET /bookings/1/edit

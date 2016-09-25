@@ -77,6 +77,7 @@ class UsersController < ApplicationController
     @user = User.find_by_email(@email)
     puts @user
     respond_to do |format|
+        session.clear
       if(nil!=@user)
         if(@password == @user.password)
           session[:user] = @user
@@ -90,12 +91,11 @@ class UsersController < ApplicationController
         session.clear
         format.html { redirect_to '/', notice: 'Invalid user Email!' }
       end  
-    end 
+    end
   end
 
   def logout
     session.clear
-    format.html { redirect_to '/', notice: 'successfully logged out!' }
   end
 
 

@@ -4,9 +4,9 @@
   <body>
 
     <div class="login">
-	<h1>Login</h1>
+  <h1>Login</h1>
     <form method="post" action="/users/login">
-    	<input type="text" name="email" placeholder="email" required="required" />
+      <input type="text" name="email" placeholder="email" required="required" />
         <input type="password" name="password" placeholder="password" required="required" />
         <button type="submit">Log in</button>
     </form>
@@ -15,9 +15,7 @@
 </form>
 </div>
 <div>
-<%if(@message) %>
-  <%= @message%>
-<%end%>
+<p id="notice"><%= notice %></p>
   
 </div>
   </body>

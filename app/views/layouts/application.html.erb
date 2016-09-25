@@ -12,15 +12,17 @@
 </head>
   <h3>Navigation</h3>
   <a href="/bookings">Home</a>
-  <a href="/bookings/new">Book a Room</a>
+  <a href="/bookings_path/search">Book a Room</a>
   <a href="/bookings">Manage Bookings</a>
   <a href="logout">Logout</a>
   <div>
     Welcome: 
     <%= session[:user]["name"]%>
-    <%if(session[:user]["admin"]=="TRUE") %>
+    <%if(session[:user]["admin"]) %>
       <a href="/users">All Users</a>
-      <a href="/rooms">Manage Rooms</a>
+      <a href="/bookings_path/allrooms">All Bookings</a>
+      <a href="/rooms">All Rooms</a>
+      <a href="/bookings_path/bookForUser">Book for a user</a>
     <%end%>
   </div>
 

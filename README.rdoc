@@ -26,6 +26,7 @@ Book a room gives a search where different filters can be used to get the room w
 All rooms tab in an admin account is where we can view all rooms available and add new rooms when needed.
 An admin can make other users admins.
 Once a booking is made, it can be deleted from manage bookings.
+An admin can delete the room that has a reservation
 
 Deployment:
 Application is deployed using amazon aws EC2 instance and is running on a tmux window.

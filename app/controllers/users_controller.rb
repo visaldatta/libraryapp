@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    if(User.where(email: @user.password))
+    if(User.where(email: @user.email).first)
       render "error"
     else
 
@@ -65,11 +65,19 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     begin
-    if(session[:user]["id"]!=@user.id)
-      rase "No_ACCESS"
+    if(session[:user]["id"]!=@user.id )
+      raise "No_ACCESS"
     else
+      puts "1"
+
+    puts "3"
     respond_to do |format|
       if @user.update(user_params)
+            if(@user.super)
+      @user.admin=true
+      @user.save
+      puts "2"
+    end
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else

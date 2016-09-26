@@ -3,9 +3,9 @@
 
 
 
-<table>
+<table class="table">
 <tr><th>User Name </th><th> Book? </th></tr>
 <% @users.each do |u| %>
-<tr><th> <%=u.name%> </th><th> <form action="/bookings_path/createbookingfor" method="get"> <input type="hidden" name="user_id" value="<%= u.id%>"><input type=submit value="Book for this user"> </form></th></tr>
+<tr><th> <%=u.name%> </th><th> <form action="/bookings_path/createbookingfor" method="get"> <input type="hidden" name="user_id" value="<%= u.id%>"><input type=submit class="btn btn-success" value="Book for this user"> </form></th></tr>
 <%end%>
 </table>

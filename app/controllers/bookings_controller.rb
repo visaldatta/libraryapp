@@ -9,6 +9,16 @@ class BookingsController < ApplicationController
       raise "NO_ACCESS"
     end
       @bookings = User.find(session[:user]["id"]).bookings
+      @prev=[]
+      @upcoming=[]
+      @bookings.each do |b|
+        if(b.datetime.to_datetime<Date.today.to_datetime)
+          @prev.push(b)
+        else
+          @upcoming.push(b)
+        end
+      end
+
      rescue
       render "error"
     else
@@ -98,8 +108,17 @@ end
     @user_id = params[:user_id]
     @size = params[:size]
     @building = params[:building]
-    @datetime = params[:datetime].to_datetime
-    @adjusted_datetime = @datetime.to_datetime + 3600
+    @availability=params[:availability]
+   begin
+    @datetime=DateTime.new(params['date']['year'].to_i,
+			   params['date']['month'].to_i,
+			   params['date']['day'].to_i,
+			   params['date']['hour'].to_i,
+			   params['date']['minute'].to_i)
+  rescue
+    render "error"
+  else
+    @adjusted_datetime = @datetime + 3600
     @size = @size+ " seats"
     @roomsMatchBS=Room.where(size: @size, building: @building)
 
@@ -144,6 +163,7 @@ end
 
 
     render "find"
+  end
   end
   end
   end

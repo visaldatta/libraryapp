@@ -2,7 +2,7 @@
 
 <h1>Listing Rooms</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Room number</th>
@@ -21,8 +21,8 @@
         <td><%= room.size %></td>
         <td><%= room.status %></td>
         <td><%= link_to 'Show', room %></td>
-        <td><%= link_to 'Edit', edit_room_path(room) %></td>
-        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Change Room Details', edit_room_path(room) %></td>
+        <td><%= link_to 'Delete Room', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

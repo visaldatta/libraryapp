@@ -9,6 +9,16 @@ class BookingsController < ApplicationController
       raise "NO_ACCESS"
     end
       @bookings = User.find(session[:user]["id"]).bookings
+      @prev=[]
+      @upcoming=[]
+      @bookings.each do |b|
+        if(b.datetime.to_datetime<Date.today.to_datetime)
+          @prev.push(b)
+        else
+          @upcoming.push(b)
+        end
+      end
+
      rescue
       render "error"
     else
@@ -98,14 +108,23 @@ end
     @user_id = params[:user_id]
     @size = params[:size]
     @building = params[:building]
+    @availability=params[:availability]
+   begin
     @datetime=DateTime.new(params['date']['year'].to_i,
 			   params['date']['month'].to_i,
 			   params['date']['day'].to_i,
 			   params['date']['hour'].to_i,
 			   params['date']['minute'].to_i)
+  rescue
+    render "error"
+  else
     @adjusted_datetime = @datetime + 3600
     @size = @size+ " seats"
     @roomsMatchBS=Room.where(size: @size, building: @building)
+
+    if((@datetime.to_datetime>=Date.today.to_datetime+7.0) or @datetime.to_datetime<=Date.today.to_datetime)
+      render "error"
+    else
      ##and (!session[:user]["admin"])
     @BookingsForThatDay = Booking.where("datetime <= ? and datetime >= ?",@adjusted_datetime, @datetime)
     puts Booking.where("user_id= ? and datetime <= ? and datetime >= ?",@user_id, @datetime.to_datetime+2/24.0, @datetime.to_datetime-2/24.0).first
@@ -145,6 +164,15 @@ end
 
     render "find"
   end
+  end
+  end
+  end
+
+
+  def userhistory
+    @user_id= params[:user_id]
+    @bookings = Booking.where(user_id: @user_id)
+    render "userhistory"
   end
 
   # GET /bookings/new

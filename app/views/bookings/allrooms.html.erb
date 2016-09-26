@@ -2,7 +2,7 @@
 
 <h2>Current and upcoming bookings</h2>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Room number</th>
@@ -18,7 +18,6 @@
         <td><%= booking.room_number %></td>
         <td><%= @users.find(booking.user_id).name %></td>
         <td><%= booking.datetime %></td>
-        <td><%= link_to 'Show', booking %></td>
         <td><%= link_to 'Cancel booking', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

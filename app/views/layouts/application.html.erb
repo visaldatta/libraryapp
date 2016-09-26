@@ -5,30 +5,77 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
     <link rel="stylesheet" type="text/css" media="screen"
   <link rel="stylesheet" href="/resources/demos/style.css">
+
+  <style type="text/css">
+    body{
+      background-image: url("https://brand.ncsu.edu/img/downloads/video-01.jpg");
+      background-size: 100%;
+    }
+  </style>
 <%if(session[:user]) %>
 </head>
-  <h3>Navigation</h3>
-  <a href="/bookings">Home</a>
-  <a href="/bookings_path/search">Book a Room</a>
-  <a href="/bookings">Manage Bookings</a>
-  <a href="/logout">Logout</a>
-  <div>
-    Welcome: 
-    <%= session[:user]["name"]%>
-    <%if(session[:user]["admin"]) %>
-      <a href="/users">All Users</a>
-      <a href="/bookings_path/allrooms">All Bookings</a>
-      <a href="/rooms">All Rooms</a>
-      <a href="/bookings_path/bookForUser">Book for a user</a>
+<br/>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+  <br/>
+      <div class="navbar-header">
+
+
+  <ul class="nav nav-pills">
+  <li role="presentation" class="active"><a href="/bookings">Home</a></li>
+  <li role="presentation" class="active"><a href="/bookings_path/search">Book a Room</a></li>
+  <li role="presentation" class="active"><a href="/bookings">Manage Bookings</a></li>
+  <li role="presentation" class="active"><a href="/logout">Logout</a></li>
+  <li role="presentation" class="active"><a href="/users/<%= session[:user]["id"]%>/edit">Edit my details</a></li>
+      <%if(session[:user]["admin"]) %>
+  <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      Administration<span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      <li><a href="/users">All Users</a></li>
+      <li><a href="/bookings_path/allrooms">All Bookings</a></li>
+      <li><a href="/rooms">All Rooms</a></li>
+      <li><a href="/bookings_path/bookForUser">Book for a user</a></li>
+    </ul>
+  </li>
     <%end%>
+</ul>
+<div>
+<div style="margin:10px;">
+      Welcome 
+    <%= session[:user]["name"]%>
+    </div>
+</div>
+
   </div>
 
 
   <%end%>
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+
+    </div>
+    </div>
+    </nav>
+
+
   <body>
+  <div class="jumbotron" style="padding-left: 20%;">
     <%= yield %>
+  </div>
+    
   </body>
 </html>

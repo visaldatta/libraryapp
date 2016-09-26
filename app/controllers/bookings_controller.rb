@@ -94,7 +94,7 @@ end
     @f = Booking.new
   end
 
-    def find
+  def find
     @user_id = params[:user_id]
     @size = params[:size]
     @building = params[:building]

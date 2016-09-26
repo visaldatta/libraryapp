@@ -1,25 +1,29 @@
 
-  <h1>Book a room</h1>
-  <form action="find" method="get">
-  James B Hunt
-  <input type="radio" name="building" value="Hunt">
-  D H Hill
-  <input type="radio" name="building" value="Hill">
+  <h2>Book a room</h2>
 
-  4 seats
-  <input type="radio" name=size value="4">
-  6 seats
-  <input type="radio" name=size value="6">
-  12 seats
-  <input type="radio" name=size value="12">
+  <form action="find" method="get">
+  <label>Choose a building:</label>
+  <select name="building" >
+      <option value="Hunt" selected="selected" >James B. Hunt Jr. Library</option>
+      <option value="Hill" >D. H. Hill Library</option>
+  </select>
+
+  <label>Choose a room size:</label>
+  <select name=size>
+  	<option value="4"  selected="selected"> small(4 seats) </option>
+  	<option value="6"  > Medium(6 seats) </option>
+  	<option value="12" > Large(12 seats) </option>
+  </select>
+
+  <label> Preferred starting date and time:</label>
 
   <div class="field">
   <input type="hidden" name="user_id" value="<%= @user_id%>">
   </div>
-<input type="datetime" name="datetime">
 
-
-  <input type="submit" name="submit" value="submit">
-
+<%=  select_datetime()%>
   
 
+
+  <button type="submit" name="submit" value="submit">Search</button> 
+  </form>

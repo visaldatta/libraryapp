@@ -17,12 +17,12 @@ password: password
 
 ==Admin operation:
 When the admin logs in, the "Administration tab" becomes visible (This is only for the admin).
-The admin can: <br />
+The admin can: 
 1) View all rooms, and create/delete rooms
 2) Book a room for a user
 3) View all bookings and view booking history 
 4) View all users and their booking history
-5) Delete users<br />
+5) Delete users
 6) Book a rom for himself like a normal user
 
 ==User operation:

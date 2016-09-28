@@ -7,28 +7,28 @@ http://ec2-52-35-54-107.us-west-2.compute.amazonaws.com:3000/
 
 Credentials to use for testing the site:
 
-== Super Admin User 
+=== Super Admin User 
 Email   :  aniattili@gmail.com
 password:  password
 
-== Normal User
+===Normal User
 Email   : daryl@ymail.com
 password: password
 
 ==Admin operation:
-When the admin logs in, the "Administration tab" becomes visible (This is only for the admin).
-The admin can:
-1) View all rooms, and create/delete rooms
-2) Book a room for a user
-3) View all bookings and view booking history
-4) View all users and their booking history
-5) Delete users
-6) Book a rom for himself like a normal user
+When the admin logs in, the "Administration tab" becomes visible (This is only for the admin).<br />
+The admin can: <br />
+1) View all rooms, and create/delete rooms <br />
+2) Book a room for a user<br />
+3) View all bookings and view booking history <br />
+4) View all users and their booking history <br />
+5) Delete users<br />
+6) Book a rom for himself like a normal user <br />
 
 ==User operation:
-The user can signup or login at the home page
-1)The user can book a room
-2)The user can edit his/her details
-3)User can search for rooms
+The user can signup or login at the home page <br />
+1)The user can book a room <br />
+2)The user can edit his/her details <br />
+3)User can search for rooms <br />
 
 

@@ -27,8 +27,8 @@ The admin can: <br />
 
 ==User operation:
 The user can signup or login at the home page <br />
-1)The user can book a room <br />
-2)The user can edit his/her details <br />
-3)User can search for rooms <br />
+1)The user can book a room <br/>
+2)The user can edit his/her details <br/>
+3)User can search for rooms <br/>
 
 

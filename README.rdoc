@@ -18,17 +18,17 @@ password: password
 ==Admin operation:
 When the admin logs in, the "Administration tab" becomes visible (This is only for the admin).
 The admin can: 
-1) View all rooms, and create/delete rooms
-2) Book a room for a user
-3) View all bookings and view booking history 
-4) View all users and their booking history
-5) Delete users
-6) Book a rom for himself like a normal user
+1. View all rooms, and create/delete rooms.
+2. Book a room for a user.
+3. View all bookings and view booking history .
+4. View all users and their booking history.
+5. Delete users.
+6. Book a rom for himself like a normal user.
 
 ==User operation:
-The user can signup or login at the home page 
-1)The user can book a room 
-2)The user can edit his/her details 
-3)User can search for rooms
+1.The user can signup or login at the home page .
+2. The user can book a room .
+3. The user can edit his/her details .
+4. User can search for rooms.
 
 

@@ -7,26 +7,28 @@ http://ec2-52-35-54-107.us-west-2.compute.amazonaws.com:3000/
 
 Credentials to use for testing the site:
 
-Super Admin User : 
+== Super Admin User 
 Email   :  aniattili@gmail.com
 password:  password
 
-User/Library Member can be created from super admin account or use this one 
+== Normal User
 Email   : daryl@ymail.com
 password: password
 
+==Admin operation:
+When the admin logs in, the "Administration tab" becomes visible (This is only for the admin).
+The admin can:
+1) View all rooms, and create/delete rooms
+2) Book a room for a user
+3) View all bookings and view booking history
+4) View all users and their booking history
+5) Delete users
+6) Book a rom for himself like a normal user
 
-Once we login - Currrent bookings/ Manage Bookings is the home page visible
+==User operation:
+The user can signup or login at the home page
+1)The user can book a room
+2)The user can edit his/her details
+3)User can search for rooms
 
-The navigation tab on the top is different for admin and a library member
 
-A super admin cannot be deleted by anyone.
-Edit my details edits details of the person logged in.
-Book a room gives a search where different filters can be used to get the room we need.
-All rooms tab in an admin account is where we can view all rooms available and add new rooms when needed.
-An admin can make other users admins.
-Once a booking is made, it can be deleted from manage bookings.
-An admin can delete the room that has a reservation
-
-Deployment:
-Application is deployed using amazon aws EC2 instance and is running on a tmux window.

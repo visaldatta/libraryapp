@@ -17,15 +17,22 @@
   </div>
   <div class="field">
     <%= f.label :building %><br>
-    <%= f.text_field :building, :required => true %>
+    James B.Hunt Library
+    <%= f.radio_button :building, 'Hunt', :checked => true %> 
+    <br/>
+    D.H Hill Library
+    <%= f.radio_button :building, 'Hill', :checked => true %> 
   </div>
   <div class="field">
     <%= f.label :size %><br>
-    <%= f.text_field :size , :required => true%>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    4 seats
+    <%= f.radio_button :size, '4 seats', :checked => true %> 
+    <br/>
+    6 seats
+    <%= f.radio_button :size, '6 seats', :checked => true %> 
+    <br/>
+    12 seats
+    <%= f.radio_button :size, '12 seats', :checked => true %> 
   </div>
   <div class="actions">
     <%= f.submit %>

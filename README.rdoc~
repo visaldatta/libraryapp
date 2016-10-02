@@ -1,0 +1,32 @@
+== README
+
+The Library room booking application is up and running.
+
+http://52.35.54.107:3000/
+http://ec2-52-35-54-107.us-west-2.compute.amazonaws.com:3000/
+
+Credentials to use for testing the site:
+
+Super Admin User : 
+Email   :  aniattili@gmail.com
+password:  password
+
+User/Library Member can be created from super admin account or use this one 
+Email   : daryl@ymail.com
+password: password
+
+
+Once we login - Currrent bookings/ Manage Bookings is the home page visible
+
+The navigation tab on the top is different for admin and a library member
+
+A super admin cannot be deleted by anyone.
+Edit my details edits details of the person logged in.
+Book a room gives a search where different filters can be used to get the room we need.
+All rooms tab in an admin account is where we can view all rooms available and add new rooms when needed.
+An admin can make other users admins.
+Once a booking is made, it can be deleted from manage bookings.
+An admin can delete the room that has a reservation
+
+Deployment:
+Application is deployed using amazon aws EC2 instance and is running on a tmux window.

@@ -2,28 +2,51 @@
   <h2>Book a room</h2>
 
   <form action="find" method="get">
+
+
   <label>Choose a building:</label>
+  <br/>
   <select name="building" >
       <option value="Hunt" selected="selected" >James B. Hunt Jr. Library</option>
       <option value="Hill" >D. H. Hill Library</option>
   </select>
-
+  <br/>
+<div>
   <label>Choose a room size:</label>
-  <select name=size>
-  	<option value="4"  selected="selected"> small(4 seats) </option>
-  	<option value="6"  > Medium(6 seats) </option>
-  	<option value="12" > Large(12 seats) </option>
+  <br/>
+  <select class="form" name=size>
+  	<option value="4"  selected="selected"> small (4 seats) </option>
+  	<option value="6"  > Medium (6 seats) </option>
+  	<option value="12" > Large (12 seats) </option>
   </select>
-
-  <label> Preferred starting date and time:</label>
-
-  <div class="field">
-  <input type="hidden" name="user_id" value="<%= @user_id%>">
   </div>
 
-<%=  select_datetime()%>
   
 
+<br/>
 
-  <button type="submit" name="submit" value="submit">Search</button> 
+
+  <input type="hidden" name="user_id" value="<%= @user_id%>">
+
+
+  <label> Choose by availability:</label>
+  <br/>
+  Available
+    <input type="radio" name="availability" value="available" checked>
+    <br/>
+  Booked
+  <input type="radio" name="availability" value="booked">
+
+  <br/>
+  <br/>
+
+ <label> Preferred starting date and time:</label>
+
+
+<br/>
+<%=  select_datetime()%>
+  <br/>
+
+
+  <button type="submit" class="btn btn-default" name="submit" value="submit">Search</button> 
   </form>

@@ -4,7 +4,7 @@
 
 
 <h2> Past Bookings for this room</h2>
-<table>
+<table class="table">
 <tr><th>User Name</th><th>Date and Time</th></tr>
 <% @prev.each do |b| %>
 <tr><th><%=@users.find(b.user_id).name%></th><th><%=b.datetime%></th></tr>
@@ -14,7 +14,7 @@
 
 
 <h2> Upcoming Bookings for this room</h2>
-<table>
+<table class="table">
 <tr><th>User Name</th><th>Date and Time</th></tr>
 <% @upcoming.each do |b| %>
 <tr><th><%=@users.find(b.user_id).name%></th><th><%=b.datetime%></th></tr>

@@ -34,6 +34,13 @@ The admin can:
 ==Use Cases:
 If admin delete a user, the booking for that user will be delete.
 
+==Booking rules:
+When booking a room, the time slots that the user can specify is precise to minute.
+For the starting time provided by the user, the 2h slot is checked for the room.
+If there's no booking for the room, this room can be booked.
+If in the slot, there's time the room's booked, then it return as unavailable.
+
+
 
 
 

@@ -31,4 +31,10 @@ The admin can:
 3. The user can edit his/her details .
 4. User can search for rooms.
 
+==Use Cases:
+If admin delete a user, the booking for that user will be delete.
+
+
+
+
 

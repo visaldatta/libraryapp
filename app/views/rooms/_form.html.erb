@@ -13,27 +13,30 @@
 
   <div class="field">
     <%= f.label :room_number %><br>
-    <%= f.text_field :room_number , :required => true%>
+    <%=  f.text_field :room_number , :required => true%>
   </div>
-  <div class="field">
+
+  <div  class="field">
     <%= f.label :building %><br>
     James B.Hunt Library
     <%= f.radio_button :building, 'Hunt', :checked => true %> 
     <br/>
     D.H Hill Library
     <%= f.radio_button :building, 'Hill', :checked => true %> 
-  </div>
-  <div class="field">
-    <%= f.label :size %><br>
-    4 seats
-    <%= f.radio_button :size, '4 seats', :checked => true %> 
+  </div> 
+
+  <div class="field"> 
+    <%= f.label :size %><br> 
+    Small (4 seats)
+    <%= f.radio_button :size,'4 seats', :checked => true %> 
     <br/>
-    6 seats
-    <%= f.radio_button :size, '6 seats', :checked => true %> 
-    <br/>
-    12 seats
+    Meduim (6 seats)
+    <%= f.radio_button :size,'6 seats', :checked => true %> 
+    <br/> 
+    Large (12 seats)
     <%= f.radio_button :size, '12 seats', :checked => true %> 
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

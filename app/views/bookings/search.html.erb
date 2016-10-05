@@ -1,8 +1,5 @@
-
-  <h2>Book a room</h2>
-
+<h2>Book a room</h2>
   <form action="find" method="get">
-
 
   <label>Choose a building:</label>
   <br/>
@@ -20,15 +17,8 @@
   	<option value="12" > Large (12 seats) </option>
   </select>
   </div>
-
-  
-
 <br/>
-
-
   <input type="hidden" name="user_id" value="<%= @user_id%>">
-
-
   <label> Choose by availability:</label>
   <br/>
   Available
@@ -36,17 +26,11 @@
     <br/>
   Booked
   <input type="radio" name="availability" value="booked">
-
   <br/>
   <br/>
-
  <label> Preferred starting date and time:</label>
-
-
 <br/>
 <%=  select_datetime()%>
   <br/>
-
-
   <button type="submit" class="btn btn-default" name="submit" value="submit">Search</button> 
   </form>

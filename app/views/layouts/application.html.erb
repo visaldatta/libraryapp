@@ -37,7 +37,7 @@
   <li role="presentation" class="active"><a href="/bookings_path/search">Book a Room</a></li>
   <li role="presentation" class="active"><a href="/bookings">Manage Bookings</a></li>
   <li role="presentation" class="active"><a href="/logout">Logout</a></li>
-  <li role="presentation" class="active"><a href="/users/<%= session[:user]["id"]%>/edit">Edit my details</a></li>
+  <li role="presentation" class="active"><a href="/users/<%= session[:user]["id"]%>/edit">Edit Details</a></li>
       <%if(session[:user]["admin"]) %>
   <li role="presentation" class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">

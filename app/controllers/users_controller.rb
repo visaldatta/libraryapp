@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 	def index
 		begin
 			if(session[:user]["admin"])
-				@users = User.all
+				@users = User.where.not(id: 1)
 			else
 				raise "No_ACCESS"
 			end
@@ -24,10 +24,12 @@ class UsersController < ApplicationController
 	# GET /users/new
 	def new
 		@user = User.new
+    session[:user] = @user
 	end
 
 	# GET /users/login
 	def login
+    session.clear
 		@user = User.new
 	end
 
@@ -48,7 +50,7 @@ class UsersController < ApplicationController
 			respond_to do |format|
 				if @user.save
 					if session[:user]
-						format.html { redirect_to @user, notice: 'User was successfully created.' }
+						format.html { redirect_to '/logout', notice: '' }
 					else
 						format.html { redirect_to '/'}
 					end
@@ -65,7 +67,7 @@ class UsersController < ApplicationController
 	# PATCH/PUT /users/1.json
 	def update
 		begin
-			if(session[:user]["id"]!=@user.id )
+			if(session[:user]["id"]!=@user.id and session[:user]["admin"]==false)
 				raise "No_ACCESS"
 			else
 				puts "1"
@@ -114,6 +116,7 @@ class UsersController < ApplicationController
 
 
 	def login
+    session.clear
 		@email = params[:email]
 		@password = params[:password]
 		@user = User.find_by_email(@email)
@@ -126,18 +129,24 @@ class UsersController < ApplicationController
 					format.html { redirect_to '/bookings'}  
 				else
 					session.clear
-					format.html { redirect_to '/', notice: 'Incorrect login!' }
+          
+					format.html { redirect_to '/error', notice: 'Incorrect login!' }
 				end
 			else
 				session.clear
-				format.html { redirect_to '/', notice: 'Invalid user Email!' }
+        
+				format.html { redirect_to '/error', notice: 'Invalid user Email!' }
 			end  
 		end
 	end
 
 	def logout
 		session.clear
+    render "login"
 	end
+  def error
+    render layout: false
+  end
 
 	def messages
 		puts session[:user]["id"]

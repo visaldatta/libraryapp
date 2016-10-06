@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#login'
+  root 'home#logout'
   get '/logout' => 'home#logout', as: 'logout'
   post '/users/login' => 'users#login'
   get '/users/:id/messages' => 'users#messages'
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   match 'bookings_path/createbookingfor' => 'bookings#createbookingfor', via: [:get]
   match 'bookings_path/bookForUser' => 'bookings#bookForUser', via: [:get]
   match 'bookings_path/userhistory' => 'bookings#userhistory', via: [:get]
+  match '/error' => 'users#error', via: [:get]
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

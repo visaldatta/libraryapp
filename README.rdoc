@@ -3,11 +3,11 @@
                                  README
 ===================================================================================
 ===================================================================================
-The Library room booking application is up and running at
+The Library room booking application is up and running on Amazon EC2 :
  -- http://52.35.54.107:3000/
  -- http://ec2-52-35-54-107.us-west-2.compute.amazonaws.com:3000/
-
-Credentials:
+===================================================================================
+Credentials:::
 
 Super Admin User : 
 Email   :  aniattili@gmail.com
@@ -21,24 +21,27 @@ Note:
 Please feel free to create a user and test the features and login into the superadmin and make him the admin from "All Users" in the dropdown in "Administration" over head tab link. Click on "Modify User Credentials" and select the checkbox with admin and  click on "Update User".
 
 ===================================================================================
-Once we login as - 
-Library Member and Admin common navigation : 
---Currrent bookings/ Manage Bookings is the home page visible
---
+Once we Login: (Home Page is the login page i.e the url provided) 
 
+Library Member and Admin common top navigation bar: 
+--Currrent bookings/ Manage Bookings is the home page visible and also the Home link from other pages.
+--Book a room takes you to the room booking page with a search to find the room you want to book if available.
+--Edit my details enables you to edit your details like Name, Password.
+--Logout logs you out of the account signed into.
+
+Administration dropdown visible only for Admin login :
+--All Users is a list of all available users where the admin can edit each user and remove or make him an admin.
+--All Bookings is used to view and modify bookings and listing down all of them.
+--All Rooms is the tab used to manage room related content.
+--Book for a User is used to book on behalf of a user. The room booked will be under the name of the user seleced and can be seen under mybookings page of the user login.
 
 ===================================================================================
-Features of the Admin 
-
+Features of the Admin : 
+Admin can modify users and remove and add admins from All Users dropdown under Administration Tab.
 A super admin cannot be deleted by any Admin.
-Edit my details edits details of the person logged in.
-Book a room gives a search where different filters can be used to get the room we need.
+Edit my details edits details of the email logged in.
+Book a room gives a search where different filters can be used to get the room we need and lets one proceed with the booking.
 All rooms tab in an admin account is where we can view all rooms available and add new rooms when needed.
-An admin can make other users admins.
 Once a booking is made, it can be deleted from manage bookings.
 An admin can delete the room that has a reservation from Administration 
-An admin can delete a user who has a reservation and the reservation disappears from the list when user is deleted.
-
-
-Deployment:
-Application is deployed using amazon aws EC2 instance and is running on a tmux window.
+An admin can delete a user who has a reservation and the reservation disappears from the list when user is deleted and room status is back to available.

@@ -37,4 +37,16 @@ If admin delete a user, the booking for that user will be delete.
 
 
 
+<<<<<<< HEAD
+A super admin cannot be deleted by anyone.
+Edit my details edits details of the person logged in.
+Book a room gives a search where different filters can be used to get the room we need.
+All rooms tab in an admin account is where we can view all rooms available and add new rooms when needed.
+An admin can make other users admins.
+Once a booking is made, it can be deleted from manage bookings.
+An admin can delete the room that has a reservation from Administration 
+An admin can delete a user who has a reservation and the reservation disappears from the list when user is deleted.
+
+=======
+>>>>>>> 47f60d25eeef70fd20d9a16cbbdd93e8acd4a790
 

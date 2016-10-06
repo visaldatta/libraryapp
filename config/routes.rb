@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#login'
+  root 'home#logout'
   get '/logout' => 'home#logout', as: 'logout'
   post '/users/login' => 'users#login'
   resources :bookings

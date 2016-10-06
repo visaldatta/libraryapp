@@ -2,31 +2,41 @@
   <% if @room.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
-
       <ul>
       <% @room.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
+
   <% end %>
 
   <div class="field">
     <%= f.label :room_number %><br>
-    <%= f.text_field :room_number , :required => true%>
+    <%=  f.text_field :room_number , :required => true%>
   </div>
-  <div class="field">
+
+  <div  class="field">
     <%= f.label :building %><br>
-    <%= f.text_field :building, :required => true %>
+    James B.Hunt Library
+    <%= f.radio_button :building, 'Hunt', :checked => true %> 
+    <br/>
+    D.H Hill Library
+    <%= f.radio_button :building, 'Hill', :checked => true %> 
+  </div> 
+
+  <div class="field"> 
+    <%= f.label :size %><br> 
+    Small (4 seats)
+    <%= f.radio_button :size,'4 seats', :checked => true %> 
+    <br/>
+    Meduim (6 seats)
+    <%= f.radio_button :size,'6 seats', :checked => true %> 
+    <br/> 
+    Large (12 seats)
+    <%= f.radio_button :size, '12 seats', :checked => true %> 
   </div>
-  <div class="field">
-    <%= f.label :size %><br>
-    <%= f.text_field :size , :required => true%>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

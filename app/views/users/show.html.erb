@@ -16,6 +16,10 @@
   <%= @user.admin %>
 </p>
 
-<form action="/bookings_path/userhistory" method="get"><input type="hidden" name="user_id" value="<%=@user.id%>"><input type="submit" name="Show History" value="Show History"></form>
+<form action="/bookings_path/userhistory" method="get">
+	<input type="hidden" name="user_id" value="<%=@user.id%>">
+	<input type="submit" name="Show History" value="Show History">
+</form>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -9,11 +9,11 @@ The Library room booking application is up and running on Amazon EC2 :
 ===================================================================================
 Credentials:::
 
-Super Admin User : 
+--Super Admin User 
 Email   :  aniattili@gmail.com
 password:  password
 
-User/Library Member can be created from super admin account or use this one 
+--Normal User
 Email   : daryl@ymail.com
 password: password
 
@@ -30,18 +30,44 @@ Library Member and Admin common top navigation bar:
 --Logout logs you out of the account signed into.
 
 Administration dropdown visible only for Admin login :
---All Users is a list of all available users where the admin can edit each user and remove or make him an admin.
+--Admin can modify users and remove and add admins from All Users dropdown under Administration Tab.
 --All Bookings is used to view and modify bookings and listing down all of them.
 --All Rooms is the tab used to manage room related content.
 --Book for a User is used to book on behalf of a user. The room booked will be under the name of the user seleced and can be seen under mybookings page of the user login.
 
 ===================================================================================
-Features of the Admin : 
-Admin can modify users and remove and add admins from All Users dropdown under Administration Tab.
+
+Admin operation:
+When the admin logs in, the "Administration tab" becomes visible (This is only for the admin).
+The admin can: 
+1. View all rooms, and create/delete rooms.
+2. Book a room for a user.
+3. View all bookings and view booking history .
+4. View all users and their booking history.
+5. Delete users.
+6. Book a rom for himself like a normal user.
+
+User operation:
+1.The user can signup or login at the home page .
+2. The user can book a room .
+3. The user can edit his/her details .
+4. User can search for rooms.
+
+===================================================================================
+
+Use Cases:
+An admin can delete a user who has a reservation and the reservation disappears from the list when user is deleted and room status is back to available.
 A super admin cannot be deleted by any Admin.
 Edit my details edits details of the email logged in.
 Book a room gives a search where different filters can be used to get the room we need and lets one proceed with the booking.
 All rooms tab in an admin account is where we can view all rooms available and add new rooms when needed.
 Once a booking is made, it can be deleted from manage bookings.
 An admin can delete the room that has a reservation from Administration 
-An admin can delete a user who has a reservation and the reservation disappears from the list when user is deleted and room status is back to available.
+
+===================================================================================
+
+Booking rules:
+When booking a room, the time slots that the user can specify is precise to minute.
+For the starting time provided by the user, the 2h slot is checked for the room.
+If there's no booking for the room, this room can be booked.
+If in the slot, there's time the room's booked, then it return as unavailable.

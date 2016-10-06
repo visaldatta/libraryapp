@@ -1,8 +1,8 @@
 <%= form_for(@booking) do |f| %>
   <% if @booking.errors.any? %>
+
     <div id="error_explanation">
       <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
-
       <ul>
       <% @booking.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,9 +10,11 @@
       </ul>
     </div>
   <% end %>
-    <% @rooms.each do |r|%>
-  <input type="radio" name="room_number" value= <%= r.room_number %> ><%= r.room_number %><br>
+
+    <% @rooms.each do |room|%>
+      <input type="radio" name="room_number" value= <%= room.room_number %> ><%= room.room_number %><br>
     <%end%>
+
   <div class="field">
   <input type="hidden" name="user_id" value="<%= @user_id%>">
   </div>

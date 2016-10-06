@@ -4,11 +4,13 @@
 
 <table class="table">
   <thead>
+
     <tr>
       <th>Name</th>
       <th>Email</th>
       <th colspan="3"></th>
     </tr>
+
   </thead>
 
   <tbody>
@@ -18,10 +20,13 @@
         <td><%= user.email %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Modify User Credentials', edit_user_path(user) %></td>
-        <td><%= link_to 'Remove User', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td><%= link_to 'Remove User', user, method: :delete, data: { confirm: 'Are you sure of removing user?' } %></td>
       </tr>
+
     <% end %>
   </tbody>
+
 </table>
 
 <br>

@@ -13,23 +13,40 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name, :required => true %>
+    <%= f.text_field :name %>
   </div>
+
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email , :required => true, :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}' %>
+    <%= f.text_field :email %>
   </div>
+
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.password_field :password, :required => true %>
+    <%= f.text_field :password %>
   </div>
-  <%if (defined? session[:user]["admin"])%>
+
   <%if(session[:user]["admin"])%>
   <div class="field">
     <%= f.label :admin %><br>
     <%= f.check_box :admin %>
   </div>
-  <%end%>
+
+  <div class="field">
+    <%= f.label :super %><br>
+    <%= f.check_box :super %>
+  </div>
+
+  <div class="field">
+    <%= f.label :messages %><br>
+    <%= f.text_field :messages %>
+  </div>
+
+  <div class="field">
+    <%= f.label :unread %><br>
+    <%= f.check_box :unread %>
+  </div>
+  -->
   <%end%>
   <div class="actions">
     <%= f.submit %>

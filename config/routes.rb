@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'home#login'
   get '/logout' => 'home#logout', as: 'logout'
   post '/users/login' => 'users#login'
+  get '/users/:id/messages' => 'users#messages'
   resources :bookings
   resources :bookings
   resources :rooms

@@ -204,12 +204,13 @@ end
     @room_number = params[:room_number]
     @booking = Booking.create(user_id: @user_id, datetime: @datetime, room_number: @room_number)
     if@booking.save
+      @user = User.find_by_id(params[:user_id])
+      @user["messages"] += "|| Booking created for "+@room_number+" at "+ @datetime + " !"
+      @user.save
       render "success"
     else
       render "error"
     end
-
-    
   end
 
 

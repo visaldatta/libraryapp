@@ -37,6 +37,7 @@
   <ul class="nav nav-pills">
   <li role="presentation" class="active"><a href="/bookings_path/search">Book a Room</a></li>
   <li role="presentation" class="active"><a href="/bookings">My Bookings</a></li>
+ <li role="presentation" class="active"><a href="/users/<%= session[:user]["id"]%>/messages"> Messages</a></li>
   <li role="presentation" class="active"><a href="/logout">Logout</a></li>
   <li role="presentation" class="active"><a href="/users/<%= session[:user]["id"]%>/edit">Edit Details</a></li>
       <%if(session[:user]["admin"]) %>

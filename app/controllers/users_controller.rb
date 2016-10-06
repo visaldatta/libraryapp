@@ -148,6 +148,15 @@ class UsersController < ApplicationController
     render layout: false
   end
 
+	def messages
+		puts session[:user]["id"]
+		@user = User.find_by_id(session[:user]["id"])
+		puts @user
+		@msgArray = @user["messages"].split("||")
+		render "messages"
+		#session[:user]
+	end
+
 
 	private
 	# Use callbacks to share common setup or constraints between actions.

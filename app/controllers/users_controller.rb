@@ -113,7 +113,6 @@ class UsersController < ApplicationController
 	end
 
 
-
 	def login
 		@email = params[:email]
 		@password = params[:password]

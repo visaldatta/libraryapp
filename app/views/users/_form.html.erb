@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :required => true %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email , :required => true%>
   </div>
 
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.text_field :password %>
+    <%= f.password_field :password , :required => true%>
   </div>
 
   <%if(session[:user]["admin"])%>
@@ -32,21 +32,7 @@
     <%= f.check_box :admin %>
   </div>
 
-  <div class="field">
-    <%= f.label :super %><br>
-    <%= f.check_box :super %>
-  </div>
 
-  <div class="field">
-    <%= f.label :messages %><br>
-    <%= f.text_field :messages %>
-  </div>
-
-  <div class="field">
-    <%= f.label :unread %><br>
-    <%= f.check_box :unread %>
-  </div>
-  -->
   <%end%>
   <div class="actions">
     <%= f.submit %>

@@ -10,5 +10,8 @@ class HomeController < ApplicationController
     end
 	def logout
         session.clear
+        @tempUser = User.new
+        session[:user] = @tempUser
+        render "login"
     end
 end

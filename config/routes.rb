@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   match 'bookings_path/createbookingfor' => 'bookings#createbookingfor', via: [:get]
   match 'bookings_path/bookForUser' => 'bookings#bookForUser', via: [:get]
   match 'bookings_path/userhistory' => 'bookings#userhistory', via: [:get]
+  match '/error' => 'users#error', via: [:get]
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

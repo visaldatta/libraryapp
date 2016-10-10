@@ -47,6 +47,67 @@ class BookingsController < ApplicationController
   def show
   end
 
+  
+
+  # POST /bookings
+  # POST /bookings.json
+  def create
+    @user_id = params[:user_id]
+    @room_number = params[:room_number]
+    @booking = Booking.new(booking_params)
+    @booking.user_id = @user_id
+    @booking.room_number=@room_number
+
+    respond_to do |format|
+      if @booking.save
+        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+        format.json { render :show, status: :created, location: @booking }
+      else
+        format.html { render :new }
+        format.json { render json: @booking.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+
+  def loggedin
+
+    begin
+          if(session[:user])
+      return
+    else
+      raise "NO_ACESS"
+    end
+    rescue
+    else
+    end
+
+  end
+
+
+
+
+  # PATCH/PUT /bookings/1
+  # PATCH/PUT /bookings/1.json
+  def update
+    if (loggedin)
+    @user_id = params[:user_id]
+    @room_number = params[:room_number]
+    @booking.user_id = @user_id
+    @booking.room_number=@room_number
+    respond_to do |format|
+      if @booking.update(booking_params)
+        format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
+        format.json { render :show, status: :ok, location: @booking }
+      else
+        format.html { render :edit }
+        format.json { render json: @booking.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  end
+
   def bookForUser
     begin
     if(session[:user]["admin"])
@@ -214,65 +275,6 @@ end
     
   end
 
-
-  # POST /bookings
-  # POST /bookings.json
-  def create
-    @user_id = params[:user_id]
-    @room_number = params[:room_number]
-    @booking = Booking.new(booking_params)
-    @booking.user_id = @user_id
-    @booking.room_number=@room_number
-
-    respond_to do |format|
-      if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
-        format.json { render :show, status: :created, location: @booking }
-      else
-        format.html { render :new }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-
-
-  def loggedin
-
-    begin
-          if(session[:user])
-      return
-    else
-      raise "NO_ACESS"
-    end
-    rescue
-    else
-    end
-
-  end
-
-
-
-
-  # PATCH/PUT /bookings/1
-  # PATCH/PUT /bookings/1.json
-  def update
-    if (loggedin)
-    @user_id = params[:user_id]
-    @room_number = params[:room_number]
-    @booking.user_id = @user_id
-    @booking.room_number=@room_number
-    respond_to do |format|
-      if @booking.update(booking_params)
-        format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
-        format.json { render :show, status: :ok, location: @booking }
-      else
-        format.html { render :edit }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-  end
 
   # DELETE /bookings/1
   # DELETE /bookings/1.json

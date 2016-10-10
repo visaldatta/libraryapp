@@ -28,7 +28,80 @@ class BookingsController < ApplicationController
 
    end
 
+     def search
+    @user_id=session[:user]["id"]
+    @booking = Booking.new
+    @rooms = Room.all
+    @f = Booking.new
+  end
+
+  def find
+
+    @user_id = params[:user_id]
+    @size = params[:size]
+    @building = params[:building]
+    @availability=params[:availability]
+   begin
+    @datetime=DateTime.new(params['date']['year'].to_i,
+         params['date']['month'].to_i,
+         params['date']['day'].to_i,
+         params['date']['hour'].to_i,
+         params['date']['minute'].to_i)
+  rescue
+    render "error"
+  else
+    @adjusted_datetime = @datetime + 3600
+    @size = @size+ " seats"
+    @roomsMatchBS=Room.where(size: @size, building: @building)
+
+    if((@datetime.to_datetime>=Date.today.to_datetime+7.0) or @datetime.to_datetime<=Date.today.to_datetime)
+      render "error"
+    else
+     ##and (!session[:user]["admin"])
+    @BookingsForThatDay = Booking.where("datetime <= ? and datetime >= ?",@adjusted_datetime, @datetime)
+    puts Booking.where("user_id= ? and datetime <= ? and datetime >= ?",@user_id, @datetime.to_datetime+2/24.0, @datetime.to_datetime-2/24.0).first
+    if((Booking.where("user_id= ? and datetime <= ? and datetime >= ?",@user_id, @datetime.to_datetime+(2/24.0), @datetime.to_datetime-(2/24.0))).any?)
+      render "error"
+    else
+    @temp=[]
+    Booking.all.each do |b|
+      @incrementedTime = b.datetime.to_datetime+2/24.0
+      puts "Initial: "+b.datetime.strftime("%H:%M")
+      puts "Later:"+@incrementedTime.strftime("%H:%M")
+      puts "-------1"
+      if (b.datetime.to_datetime-(2/24.0))<=@datetime 
+        if @incrementedTime>=@datetime 
+          @temp.push(b)
+        end
+      end
+    end
+    @BookingsForThatDay=@temp
+    @commonRooms=[]
+    @roomsMatchBS.each do |r|
+      @BookingsForThatDay.each do |b|
+        if(r.room_number==b.room_number)
+          @commonRooms.push(r)
+        end
+      end
+    end
+
+    @commonRooms = @commonRooms.uniq
+    @roomnumbers=[]
+    @commonRooms.each do |r|
+      @roomnumbers.push(r.room_number)
+    end
+
+    @uncommon=@roomsMatchBS.where.not(room_number:@roomnumbers)
+
+
+    render "find"
+  end
+  end
+  end
+  end
+
    def allrooms
+
     begin
       if(session[:user]["admin"])
       @bookings = Booking.all
@@ -52,6 +125,7 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
+    
     @user_id = params[:user_id]
     @room_number = params[:room_number]
     @booking = Booking.new(booking_params)
@@ -160,76 +234,7 @@ end
 
 
 
-  def search
-    @user_id=session[:user]["id"]
-    @booking = Booking.new
-    @rooms = Room.all
-    @f = Booking.new
-  end
 
-  def find
-    @user_id = params[:user_id]
-    @size = params[:size]
-    @building = params[:building]
-    @availability=params[:availability]
-   begin
-    @datetime=DateTime.new(params['date']['year'].to_i,
-         params['date']['month'].to_i,
-         params['date']['day'].to_i,
-         params['date']['hour'].to_i,
-         params['date']['minute'].to_i)
-  rescue
-    render "error"
-  else
-    @adjusted_datetime = @datetime + 3600
-    @size = @size+ " seats"
-    @roomsMatchBS=Room.where(size: @size, building: @building)
-
-    if((@datetime.to_datetime>=Date.today.to_datetime+7.0) or @datetime.to_datetime<=Date.today.to_datetime)
-      render "error"
-    else
-     ##and (!session[:user]["admin"])
-    @BookingsForThatDay = Booking.where("datetime <= ? and datetime >= ?",@adjusted_datetime, @datetime)
-    puts Booking.where("user_id= ? and datetime <= ? and datetime >= ?",@user_id, @datetime.to_datetime+2/24.0, @datetime.to_datetime-2/24.0).first
-    if((Booking.where("user_id= ? and datetime <= ? and datetime >= ?",@user_id, @datetime.to_datetime+(2/24.0), @datetime.to_datetime-(2/24.0))).any?)
-      render "error"
-    else
-    @temp=[]
-    Booking.all.each do |b|
-      @incrementedTime = b.datetime.to_datetime+2/24.0
-      puts "Initial: "+b.datetime.strftime("%H:%M")
-      puts "Later:"+@incrementedTime.strftime("%H:%M")
-      puts "-------1"
-      if (b.datetime.to_datetime-(2/24.0))<=@datetime 
-        if @incrementedTime>=@datetime 
-          @temp.push(b)
-        end
-      end
-    end
-    @BookingsForThatDay=@temp
-    @commonRooms=[]
-    @roomsMatchBS.each do |r|
-      @BookingsForThatDay.each do |b|
-        if(r.room_number==b.room_number)
-          @commonRooms.push(r)
-        end
-      end
-    end
-
-    @commonRooms = @commonRooms.uniq
-    @roomnumbers=[]
-    @commonRooms.each do |r|
-      @roomnumbers.push(r.room_number)
-    end
-
-    @uncommon=@roomsMatchBS.where.not(room_number:@roomnumbers)
-
-
-    render "find"
-  end
-  end
-  end
-  end
 
 
   def userhistory

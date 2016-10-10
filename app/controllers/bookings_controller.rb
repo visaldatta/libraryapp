@@ -1,3 +1,5 @@
+
+
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
@@ -111,10 +113,10 @@ end
     @availability=params[:availability]
    begin
     @datetime=DateTime.new(params['date']['year'].to_i,
-			   params['date']['month'].to_i,
-			   params['date']['day'].to_i,
-			   params['date']['hour'].to_i,
-			   params['date']['minute'].to_i)
+         params['date']['month'].to_i,
+         params['date']['day'].to_i,
+         params['date']['hour'].to_i,
+         params['date']['minute'].to_i)
   rescue
     render "error"
   else
@@ -204,13 +206,12 @@ end
     @room_number = params[:room_number]
     @booking = Booking.create(user_id: @user_id, datetime: @datetime, room_number: @room_number)
     if@booking.save
-      @user = User.find_by_id(params[:user_id])
-      @user["messages"] += "|| Booking created for "+@room_number+" at "+ @datetime + " !"
-      @user.save
       render "success"
     else
       render "error"
     end
+
+    
   end
 
 

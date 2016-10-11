@@ -24,12 +24,12 @@ class UsersController < ApplicationController
 	# GET /users/new
 	def new
 		@user = User.new
-    session[:user] = @user
+		session[:user] = @user
 	end
 
 	# GET /users/login
 	def login
-    session.clear
+		session.clear
 		@user = User.new
 	end
 
@@ -116,7 +116,7 @@ class UsersController < ApplicationController
 
 
 	def login
-    session.clear
+		session.clear
 		@email = params[:email]
 		@password = params[:password]
 		@user = User.find_by_email(@email)
@@ -129,12 +129,12 @@ class UsersController < ApplicationController
 					format.html { redirect_to '/bookings'}  
 				else
 					session.clear
-          
+
 					format.html { redirect_to '/error', notice: 'Incorrect login!' }
 				end
 			else
 				session.clear
-        
+
 				format.html { redirect_to '/error', notice: 'Invalid user Email!' }
 			end  
 		end
@@ -142,11 +142,11 @@ class UsersController < ApplicationController
 
 	def logout
 		session.clear
-    render "login"
+		render "login"
 	end
-  def error
-    render layout: false
-  end
+	def error
+		render layout: false
+	end
 
 	def messages
 		puts session[:user]["id"]
